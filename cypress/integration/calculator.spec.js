@@ -45,7 +45,7 @@ context("ui 조작 테스트", () => {
     });
     it("2) 0 * 3의 결과 값은 0이다.", () => {
       cy.get(`[data-cy="0"]`).click();
-      cy.get(`[data-cy="*"]`).click();
+      cy.get(`[data-cy="X"]`).click();
       cy.get(`[data-cy="3"]`).click();
       cy.get(`[data-cy="="]`).click();
       cy.get(`[data-cy="total"]`).should("have.text", 0);
@@ -53,19 +53,11 @@ context("ui 조작 테스트", () => {
   });
   describe("2개의 숫자에 대해 나눗셈이 가능하다.", () => {
     it("1) 3 / 3의 결과 값은 1이다.", () => {
-      cy.get(`[data-cy="1"]`).click();
+      cy.get(`[data-cy="3"]`).click();
       cy.get(`[data-cy="/"]`).click();
       cy.get(`[data-cy="3"]`).click();
       cy.get(`[data-cy="="]`).click();
       cy.get(`[data-cy="total"]`).should("have.text", 1);
-    });
-    it("2) -3 / 3의 결과 값은 1이다.", () => {
-      cy.get(`[data-cy="-"]`).click();
-      cy.get(`[data-cy="3"]`).click();
-      cy.get(`[data-cy="/"]`).click();
-      cy.get(`[data-cy="3"]`).click();
-      cy.get(`[data-cy="="]`).click();
-      cy.get(`[data-cy="total"]`).should("have.text", -1);
     });
   });
   describe("AC(All Clear)버튼을 누르면 0으로 초기화 한다.", () => {
@@ -95,6 +87,7 @@ context("ui 조작 테스트", () => {
       cy.get(`[data-cy="1"]`).click();
       cy.get(`[data-cy="/"]`).click();
       cy.get(`[data-cy="3"]`).click();
+      cy.get(`[data-cy="="]`).click();
       cy.get(`[data-cy="total"]`).should("have.text", 0);
     });
     it("2) -1 / 3 을 입력하면, 0이 나와야 한다.", () => {
